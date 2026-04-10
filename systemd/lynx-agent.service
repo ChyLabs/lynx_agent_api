@@ -1,0 +1,24 @@
+[Unit]
+Description=Lynx Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/usr/local/bin
+Environment=ENV=production
+Restart=always
+RestartSec=3
+ExecStart=/usr/local/bin/lynx_agent
+StandardOutput=journal
+StandardError=journal
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
